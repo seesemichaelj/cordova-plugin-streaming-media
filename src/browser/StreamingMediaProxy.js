@@ -2,8 +2,20 @@
 "use strict";
 
 function StreamingMedia() {
+	var cssId = 'VideoJSCSS';  // you could encode the css path itself to generate id..
+	if (!document.getElementById(cssId)) {
+		var head  = document.getElementsByTagName('head')[0];
+		var link  = document.createElement('link');
+		link.id   = cssId;
+		link.rel  = 'stylesheet';
+		link.type = 'text/css';
+		link.href = '//vjs.zencdn.net/5.19/video-js.min.css';
+		link.media = 'all';
+		head.appendChild(link);
+	}
+
 	jQuery.ajax({
-		"url": "http://vjs.zencdn.net/6.1.0/video.js",
+		"url": "//vjs.zencdn.net/6.1.0/video.js",
 		"dataType": "script",
 		"async": true,
 		"success": () => {
